@@ -45,7 +45,7 @@ void Mesh::Draw(ShaderProgram shader) {
 	unsigned int heighNr = 1;
 
 	for (unsigned int i = 0; i < textures.size(); i++) {
-		glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit befor binding
+		glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit before binding
 
 		std::string number;
 		std::string name = textures[i].type;

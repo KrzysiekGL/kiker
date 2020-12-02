@@ -65,6 +65,8 @@ int main() {
 	glCullFace(GL_CW);
 
 	// Begin -- Things to draw
+	ShaderProgram shader("res/shaders/shader.vert", "res/shaders/shader.frag");
+	Model plecak = Model("res/models/backpack/backpack.obj");
 	// End -- Things to draw
 
 	// Pre-GL settings
@@ -82,7 +84,7 @@ int main() {
 			camera->MouseInputProcess(window);
 		}
 
-		// Clear Buffers and redraw backgroudn
+		// Clear Buffers and redraw background
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		glfwGetFramebufferSize(window, &width, &height);
 
@@ -99,12 +101,12 @@ int main() {
 		projection = glm::perspective(glm::radians(45.f), (float)width / (float)height, .1f, 100.f);
 
 		// Drawing
-//		ShaderProgram shader("res/shaders/shader.vert", "res/shaders/shader.frag");
-//		shader.SetUniformMatrix4f("model", model);
-//		shader.SetUniformMatrix4f("view", view);
-//		shader.SetUniformMatrix4f("projection", projection);
-//		Model plecak = Model("res/models/backpack/backpack.obj");
-//		plecak.Draw(shader);
+		shader.SetUniformMatrix4f("model", model);
+		shader.SetUniformMatrix4f("view", view);
+		shader.SetUniformMatrix4f("projection", projection);
+
+		plecak.Draw(shader);
+
 //		CGL::Rectangle rec(glm::vec3(-.5f, .5f, 0.f), glm::vec2(1.f, 1.f));
 //		rec.Draw(model, view, projection);
 

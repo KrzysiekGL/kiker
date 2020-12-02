@@ -8,3 +8,6 @@
 # large resource files
 **/res/models/**
 **/res/tex/**
+
+# binary file (project bin)
+**/Zbijak

@@ -27,7 +27,7 @@ void Model::loadModel(std::string path) {
 		aiProcess_CalcTangentSpace
 	);
 
-	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
+	if (!scene || (scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) || !scene->mRootNode) {
 #ifdef _DEBUG
 		std::cout << "ERROR:ASSIMP::" << importer.GetErrorString() << std::endl;
 #endif //_DEBUG
@@ -96,13 +96,11 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
 	if (mesh->mMaterialIndex >= 0) {
 		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-		//TEST
-		//std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
-		//textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+		std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
-		//TEST
-		//std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
-		//textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+		std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 	}
 
 	return Mesh(vertices, indices, textures);
@@ -146,7 +144,9 @@ unsigned int TextureFromFile(const char* file, const std::string directory, bool
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_MIPMAPS |
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 		SOIL_FLAG_INVERT_Y |
+#endif
 		SOIL_FLAG_NTSC_SAFE_RGB |
 		SOIL_FLAG_COMPRESS_TO_DXT
 	);
