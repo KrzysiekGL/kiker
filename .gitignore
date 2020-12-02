@@ -1,0 +1,10 @@
+# project settings
+.cproject
+.project
+
+# cpp specific files
+*.[oa]
+
+# large resource files
+**/res/models/**
+**/res/tex/**
