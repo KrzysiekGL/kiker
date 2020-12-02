@@ -5,11 +5,6 @@ Model::Model(std::string path) {
 }
 
 Model::~Model() {
-	for (Mesh& mesh : meshes)
-		mesh.~Mesh();
-	meshes.clear();
-	textures_loaded.clear();
-	directory.clear();
 }
 
 void Model::Draw(ShaderProgram shader) {

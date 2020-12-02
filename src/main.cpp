@@ -111,7 +111,7 @@ int main() {
 //		rec.Draw(model, view, projection);
 
 		// End -- Rendering
-		
+
         //Time
 		float currentFrame = (float)glfwGetTime();
 		deltaFrame = currentFrame - lastFrame;
