@@ -67,14 +67,14 @@ int main() {
 	glCullFace(GL_CW);
 
 	// Begin -- Things to draw
-	ShaderProgram shader("res/shaders/shader.vert", "res/shaders/shader.frag");
-	Model plecak = Model("res/models/backpack/backpack.obj");
+	CGL::ShaderProgram shader("res/shaders/shader.vert", "res/shaders/shader.frag");
+	CGL::Model plecak = CGL::Model("res/models/backpack/backpack.obj");
 	// End -- Things to draw
 
 	// Pre-GL settings
 	glViewport(0, 0, width, height);
 	glClearColor(0.3f, 0.7f, 0.5f, 1.f);
-	std::unique_ptr<Camera> camera = std::make_unique<Camera>();
+	std::unique_ptr<CGL::Camera> camera = std::make_unique<CGL::Camera>();
 	glfwSetTime(0.0);
 
 	// Game Loop

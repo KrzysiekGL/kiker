@@ -10,32 +10,34 @@
 
 #include "ShaderProgram.hpp"
 
-struct Vertex {
-	glm::vec3 Position;
-	glm::vec3 Normal;
-	glm::vec2 TexCoords;
-};
+namespace CGL {
+	struct Vertex {
+		glm::vec3 Position;
+		glm::vec3 Normal;
+		glm::vec2 TexCoords;
+	};
 
-struct Texture {
-	GLuint id;
-	std::string type;
-	std::string path;
-};
+	struct Texture {
+		GLuint id;
+		std::string type;
+		std::string path;
+	};
 
-class Mesh {
-public:
-	Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
-	~Mesh();
+	class Mesh {
+	public:
+		Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+		~Mesh();
 
-	void Draw(ShaderProgram shader);
+		void Draw(ShaderProgram shader);
 
-	std::vector<Vertex> vertices;
-	std::vector<unsigned int> indices;
-	std::vector<Texture> textures;
-private:
-	unsigned int VAO, VBO, EBO;
+		std::vector<Vertex> vertices;
+		std::vector<unsigned int> indices;
+		std::vector<Texture> textures;
+	private:
+		unsigned int VAO, VBO, EBO;
 
-	void setupMesh();
-};
+		void setupMesh();
+	};
+} // namespace CGL
 
 #endif // !MESHH 

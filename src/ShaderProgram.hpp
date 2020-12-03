@@ -14,32 +14,34 @@
 #include <sstream>
 #include <fstream>
 
-enum class ShaderType {
-	VERTEX,
-	FRAGMENT
-};
+namespace CGL {
+	enum class ShaderType {
+		VERTEX,
+		FRAGMENT
+	};
 
-class ShaderProgram {
-public:
-	// Constructors & Destructors
-	ShaderProgram();
-	ShaderProgram(const char* vertexFile, const char* fragmentFile);
-	~ShaderProgram();
+	class ShaderProgram {
+	public:
+		// Constructors & Destructors
+		ShaderProgram();
+		ShaderProgram(const char* vertexFile, const char* fragmentFile);
+		~ShaderProgram();
 
-	//Methods
-	GLuint GetProgram() { return this->ID; }
-	void Use() { glUseProgram(this->ID); }
+		//Methods
+		GLuint GetProgram() { return this->ID; }
+		void Use() { glUseProgram(this->ID); }
 
-	void SetUniform1i(std::string name, int v);
-	void SetUniformMatrix4f(std::string name, glm::mat4 mat);
+		void SetUniform1i(std::string name, int v);
+		void SetUniformMatrix4f(std::string name, glm::mat4 mat);
 
-private:
-	// Fields
-	GLuint ID;
+	private:
+		// Fields
+		GLuint ID;
 
-	// Methods
-	void addShaderToProgram(const char* filePath, ShaderType type);
-	std::string readFileToSource(const char* filePath);
-};
+		// Methods
+		void addShaderToProgram(const char* filePath, ShaderType type);
+		std::string readFileToSource(const char* filePath);
+	};
+} // namespace CGL
 
 #endif // !SHADERHPP
