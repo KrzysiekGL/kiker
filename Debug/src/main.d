@@ -200,7 +200,7 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/scene.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/postprocess.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/SOIL2/SOIL2.h \
- ../src/Mesh.h ../src/Rectangle.h ../src/Line.h ../src/Shape.h
+ ../src/Mesh.h
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/GL/glew.h:
 
@@ -607,9 +607,3 @@ src/main.o: ../src/main.cpp \
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/SOIL2/SOIL2.h:
 
 ../src/Mesh.h:
-
-../src/Rectangle.h:
-
-../src/Line.h:
-
-../src/Shape.h:

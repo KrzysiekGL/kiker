@@ -11,7 +11,6 @@
 #include "ShaderProgram.hpp"
 #include "Camera.h"
 #include "Model.h"
-#include "Rectangle.h"
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -41,7 +40,10 @@ int main() {
 
 	// Create window with graphics context
 	GLFWwindow* window = glfwCreateWindow(width, height, "Zbijak", NULL, NULL);
-	if (window == NULL) return EXIT_FAILURE;
+	if (window == NULL) {
+		glfwErrorCallback(EXIT_FAILURE, "Window not created");
+		return EXIT_FAILURE;
+	}
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1); // Set framerate highcap (this here is max of 60 fps)
 
@@ -106,9 +108,6 @@ int main() {
 		shader.SetUniformMatrix4f("projection", projection);
 
 		plecak.Draw(shader);
-
-//		CGL::Rectangle rec(glm::vec3(-.5f, .5f, 0.f), glm::vec2(1.f, 1.f));
-//		rec.Draw(model, view, projection);
 
 		// End -- Rendering
 
