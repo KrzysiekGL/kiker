@@ -24,11 +24,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 static float deltaFrame = 0.f;
 static float lastFrame = 0.f;
 
-// Free cam
+// Free camera
 bool freeCam = false;
 
 int main() {
-	// Setup glfw - Context and events handler; lib wriiten for OpenGL in mind
+	// Setup glfw - Context and events handler; lib written for OpenGL in mind
 	if (!glfwInit()) return EXIT_FAILURE;
 	int width = WIDTH, height = HEIGHT;
 
@@ -45,7 +45,7 @@ int main() {
 		return EXIT_FAILURE;
 	}
 	glfwMakeContextCurrent(window);
-	glfwSwapInterval(1); // Set framerate highcap (this here is max of 60 fps)
+	glfwSwapInterval(1); // Set farmerate highcap (this here is max of 60 fps)
 
 	// Setup GLEW - OpenGL instruction wrapper
 	glewExperimental = GL_TRUE;
@@ -128,7 +128,7 @@ int main() {
 
 // main.cpp scope function definitions
 //
-// GLFW callbacks
+// GLFW callback
 static void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
 	glViewport(0, 0, width, height);
 }
