@@ -155,7 +155,7 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../ext/matrix_transform.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../ext/matrix_transform.inl \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/matrix_transform.inl \
- ../src/ShaderProgram.hpp \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/quaternion.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/../ext/vector_relational.hpp \
@@ -194,13 +194,15 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.inl \
- ../src/Camera.h ../src/Model.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/config.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/Importer.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/scene.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/postprocess.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/SOIL2/SOIL2.h \
- ../src/Mesh.h
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/GL/glew.h:
 
@@ -514,7 +516,7 @@ src/main.o: ../src/main.cpp \
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/matrix_transform.inl:
 
-../src/ShaderProgram.hpp:
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.hpp:
 
@@ -592,9 +594,9 @@ src/main.o: ../src/main.cpp \
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.inl:
 
-../src/Camera.h:
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h:
 
-../src/Model.h:
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/config.h:
 
@@ -606,4 +608,6 @@ src/main.o: ../src/main.cpp \
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/SOIL2/SOIL2.h:
 
-../src/Mesh.h:
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h:

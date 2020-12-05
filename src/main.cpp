@@ -8,9 +8,9 @@
 
 #include <memory>
 
-#include "ShaderProgram.hpp"
-#include "Camera.h"
-#include "Model.h"
+#include "CGL/ShaderProgram.h"
+#include "CGL/Camera.h"
+#include "CGL/Model.h"
 
 #define WIDTH 1280
 #define HEIGHT 720

@@ -4,24 +4,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/Camera.cpp \
-../src/Mesh.cpp \
-../src/Model.cpp \
-../src/ShaderProgram.cpp \
 ../src/main.cpp 
 
 OBJS += \
-./src/Camera.o \
-./src/Mesh.o \
-./src/Model.o \
-./src/ShaderProgram.o \
 ./src/main.o 
 
 CPP_DEPS += \
-./src/Camera.d \
-./src/Mesh.d \
-./src/Model.d \
-./src/ShaderProgram.d \
 ./src/main.d 
 
 
