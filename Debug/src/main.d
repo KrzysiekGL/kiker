@@ -194,7 +194,6 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.inl \
- /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/config.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/Importer.hpp \
@@ -202,7 +201,11 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/postprocess.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/SOIL2/SOIL2.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h \
- /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Scene.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/GL/glew.h:
 
@@ -594,8 +597,6 @@ src/main.o: ../src/main.cpp \
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.inl:
 
-/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h:
-
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/config.h:
@@ -611,3 +612,11 @@ src/main.o: ../src/main.cpp \
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Scene.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h:

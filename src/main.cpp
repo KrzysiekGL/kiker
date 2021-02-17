@@ -9,8 +9,9 @@
 #include <memory>
 
 #include "CGL/ShaderProgram.h"
-#include "CGL/Camera.h"
 #include "CGL/Model.h"
+#include "CGL/Scene.h"
+#include "CGL/Camera.h"
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -28,7 +29,7 @@ static float lastFrame = 0.f;
 bool freeCam = false;
 
 int main() {
-	// Setup glfw - Context and events handler; lib written for OpenGL in mind
+	// Setup GLFW - Context and events handler; lib written for OpenGL in mind
 	if (!glfwInit()) return EXIT_FAILURE;
 	int width = WIDTH, height = HEIGHT;
 
@@ -45,7 +46,7 @@ int main() {
 		return EXIT_FAILURE;
 	}
 	glfwMakeContextCurrent(window);
-	glfwSwapInterval(1); // Set farmerate highcap (this here is max of 60 fps)
+	glfwSwapInterval(1); // Set frame rate high cap (1 is equal to 60 fps)
 
 	// Setup GLEW - OpenGL instruction wrapper
 	glewExperimental = GL_TRUE;
@@ -67,24 +68,21 @@ int main() {
 	glCullFace(GL_CW);
 
 	// Begin -- Things to draw
-	CGL::ShaderProgram shader("res/shaders/shader.vert", "res/shaders/shader.frag");
-	CGL::Model plecak = CGL::Model("res/models/backpack/backpack.obj");
+	std::shared_ptr<CGL::Scene> scene = std::make_shared<CGL::Scene>();
+	scene->AddShaderProgram("shader", "res/shaders/shader-unix.vert", "res/shaders/shader-unix.frag");
+	scene->AddModel("dirt", "res/models/dirt/dirt.obj");
+	scene->AddActor("dirt", "shader");
 	// End -- Things to draw
 
 	// Pre-GL settings
 	glViewport(0, 0, width, height);
 	glClearColor(0.3f, 0.7f, 0.5f, 1.f);
-	std::unique_ptr<CGL::Camera> camera = std::make_unique<CGL::Camera>();
 	glfwSetTime(0.0);
 
 	// Game Loop
 	while (!glfwWindowShouldClose(window)) {
 		// Events
 		glfwPollEvents();
-		if (freeCam) {
-			camera->KeyInputProcess(window, deltaFrame);
-			camera->MouseInputProcess(window);
-		}
 
 		// Clear Buffers and redraw background
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -92,23 +90,7 @@ int main() {
 
 
 		// Begin -- Rendering
-		// Model matrix
-		glm::mat4 model = glm::mat4(1.f);
-
-		// View matrix (from camera)
-		glm::mat4 view = camera->GetViewMatrix();
-
-		// Projection matrix
-		glm::mat4 projection = glm::mat4(1.f);
-		projection = glm::perspective(glm::radians(45.f), (float)width / (float)height, .1f, 100.f);
-
-		// Drawing
-		shader.SetUniformMatrix4f("model", model);
-		shader.SetUniformMatrix4f("view", view);
-		shader.SetUniformMatrix4f("projection", projection);
-
-		plecak.Draw(shader);
-
+		scene->RunScene(window, deltaFrame, freeCam);
 		// End -- Rendering
 
         //Time
@@ -148,6 +130,10 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 			}
 			else glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		}
+		break;
+
+	case GLFW_KEY_ESCAPE:
+		glfwSetWindowShouldClose(window, true);
 		break;
 
 	default:
