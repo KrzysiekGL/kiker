@@ -68,19 +68,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: Zbijak
+all: Kiker
 
 # Tool invocations
-Zbijak: $(OBJS) $(USER_OBJS)
+Kiker: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -Wl,--no-as-needed $(OBJS) $(USER_OBJS) $(LIBS) -o "Zbijak" -L/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/lib -L/usr/lib/x86_64-linux-gnu
+	g++ -Wl,--no-as-needed $(OBJS) $(USER_OBJS) $(LIBS) -o "Kiker" -L/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/lib -L/usr/lib/x86_64-linux-gnu
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(STOY_DEPS)$(SAU_DEPS)$(C_UPPER_DEPS)$(TESSCTRL_DEPS)$(VERT_DEPS)$(C_DEPS)$(COMP_DEPS)$(FRAGX_DEPS)$(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(OBJS)$(TESSEVAL_DEPS)$(CMAP_DEPS)$(CPP_DEPS)$(FRAG_DEPS)$(GEOM_DEPS) Zbijak
+	-$(RM) $(STOY_DEPS)$(SAU_DEPS)$(C_UPPER_DEPS)$(TESSCTRL_DEPS)$(VERT_DEPS)$(C_DEPS)$(COMP_DEPS)$(FRAGX_DEPS)$(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(OBJS)$(TESSEVAL_DEPS)$(CMAP_DEPS)$(CPP_DEPS)$(FRAG_DEPS)$(GEOM_DEPS) Kiker
 	-@echo ' '
 
 .PHONY: all clean dependents
