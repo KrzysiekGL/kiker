@@ -17,7 +17,7 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -Wl,--no-as-needed "$<" -o "$@" -D_DEBUG -I/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)"
+	g++ -Wl,--no-as-needed "$<" -o "$@" -D_DEBUG -I/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include -I/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)"
 	@echo 'Finished building: $<'
 	@echo ' '
 

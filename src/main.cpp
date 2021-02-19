@@ -71,7 +71,25 @@ int main() {
 	std::shared_ptr<CGL::Scene> scene = std::make_shared<CGL::Scene>();
 	scene->AddShaderProgram("shader", "res/shaders/shader-unix.vert", "res/shaders/shader-unix.frag");
 	scene->AddModel("dirt", "res/models/dirt/dirt.obj");
-	scene->AddActor("dirt", "shader");
+	scene->AddModel("plane", "res/models/plane/plane.obj");
+
+	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 10.f, 0.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model1);
+
+	glm::mat4 model2 = glm::translate(glm::mat4(1.f), glm::vec3(3.f, 30.f, 4.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model2);
+
+	glm::mat4 model3 = glm::translate(glm::mat4(1.f), glm::vec3(-4.f, 100.f, -4.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model3);
+
+	glm::mat4 model4 = glm::translate(glm::mat4(1.f), glm::vec3(-4.f, 200.f, -4.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model4);
+
+	glm::mat4 model5 = glm::translate(glm::mat4(1.f), glm::vec3(3.f, 45.f, 4.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model5);
+
+	scene->AddActor("plane", "shader", CGL::Shape::PLANE);
+
 	// End -- Things to draw
 
 	// Pre-GL settings
