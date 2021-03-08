@@ -28,6 +28,12 @@ static float lastFrame = 0.f;
 // Free camera
 bool freeCam = false;
 
+// Access to Window and Scene
+std::shared_ptr<CGL::Scene> global_scene = nullptr;
+
+// Kiker functions
+void shoot();
+
 int main() {
 	// Setup GLFW - Context and events handler; lib written for OpenGL in mind
 	if (!glfwInit()) return EXIT_FAILURE;
@@ -69,6 +75,7 @@ int main() {
 
 	// Begin -- Things to draw
 	std::shared_ptr<CGL::Scene> scene = std::make_shared<CGL::Scene>();
+	global_scene = scene;
 	scene->AddShaderProgram("shader", "res/shaders/shader-unix.vert", "res/shaders/shader-unix.frag");
 	scene->AddModel("dirt", "res/models/dirt/dirt.obj");
 	scene->AddModel("plane", "res/models/plane/plane.obj");
@@ -89,7 +96,6 @@ int main() {
 	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model5);
 
 	scene->AddActor("plane", "shader", CGL::Shape::PLANE);
-
 	// End -- Things to draw
 
 	// Pre-GL settings
@@ -150,6 +156,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 		}
 		break;
 
+	case GLFW_KEY_P:
+		if(action == GLFW_PRESS)
+			shoot();
+		break;
+
 	case GLFW_KEY_ESCAPE:
 		glfwSetWindowShouldClose(window, true);
 		break;
@@ -157,4 +168,22 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 	default:
 		break;
 	}
+}
+
+// Kiker functions definitions
+void shoot() {
+	// check if global_scene was set
+	if(global_scene == nullptr) return;
+
+	// add needed resources
+	global_scene->AddShaderProgram("color", "res/shaders/color.vert", "res/shaders/color.frag");
+	global_scene->AddModel("ball", "res/models/sphere/sphere.obj");
+
+	// add actor in the position of the used camera (player)
+	glm::mat4 model_matrix = glm::translate(glm::mat4(1.f), global_scene->GetCameraPosition());
+	std::string actor_name = global_scene->AddActor("ball", "color", CGL::Shape::SPHERE, .2f, model_matrix);
+
+	// set actor velocity
+	if(actor_name != "")
+		global_scene->SetActorLinearVelocity(actor_name, global_scene->GetCameraFront(), 20.f);
 }
