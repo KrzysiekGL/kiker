@@ -25,8 +25,9 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 static float deltaFrame = 0.f;
 static float lastFrame = 0.f;
 
-// Free camera
-bool freeCam = false;
+// Freeze physics and Free camera
+static bool freeCam = false;
+static bool freeze = true;
 
 // Access to Window and Scene
 std::shared_ptr<CGL::Scene> global_scene = nullptr;
@@ -76,26 +77,33 @@ int main() {
 	// Begin -- Things to draw
 	std::shared_ptr<CGL::Scene> scene = std::make_shared<CGL::Scene>();
 	global_scene = scene;
+
 	scene->AddShaderProgram("shader", "res/shaders/shader-unix.vert", "res/shaders/shader-unix.frag");
-	scene->AddModel("dirt", "res/models/dirt/dirt.obj");
+	scene->AddShaderProgram("color", "res/shaders/color.vert", "res/shaders/color.frag");
+
 	scene->AddModel("plane", "res/models/plane/plane.obj");
+	scene->AddModel("sphere", "res/models/sphere/sphere.obj");
+	scene->AddModel("dirt", "res/models/dirt/dirt.obj");
+
+	// Cheat
+	{
+	glm::mat4 modelCheat0 = glm::translate(glm::mat4(1.f), glm::vec3(10.f, -1000.f, 0.f));
+	glm::mat4 modelCheat1 = glm::translate(glm::mat4(1.f), glm::vec3(-10.f, -1000.f, 0.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 0.f, modelCheat0);
+	scene->AddActor("sphere", "color", CGL::Shape::SPHERE, 0.f, modelCheat1);
+	}
+	// End Cheat
 
 	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 10.f, 0.f));
 	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model1);
 
-	glm::mat4 model2 = glm::translate(glm::mat4(1.f), glm::vec3(3.f, 30.f, 4.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model2);
-
-	glm::mat4 model3 = glm::translate(glm::mat4(1.f), glm::vec3(-4.f, 100.f, -4.f));
+	glm::mat4 model3 = glm::translate(glm::mat4(1.f), glm::vec3(5.f, 5.f, 5.f));
 	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model3);
 
-	glm::mat4 model4 = glm::translate(glm::mat4(1.f), glm::vec3(-4.f, 200.f, -4.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model4);
+	glm::mat4 model2 = glm::translate(glm::mat4(1.f), glm::vec3(10.f, 2.f, 0.f));
+	scene->AddActor("sphere", "color", CGL::Shape::SPHERE, .2f, model2);
 
-	glm::mat4 model5 = glm::translate(glm::mat4(1.f), glm::vec3(3.f, 45.f, 4.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model5);
-
-	scene->AddActor("plane", "shader", CGL::Shape::PLANE);
+	scene->AddActor("plane", "shader", CGL::Shape::PLANE, 0.f, glm::mat4(1.f));
 	// End -- Things to draw
 
 	// Pre-GL settings
@@ -114,7 +122,7 @@ int main() {
 
 
 		// Begin -- Rendering
-		scene->RunScene(window, deltaFrame, freeCam);
+		scene->RunScene(window, deltaFrame, freeze, freeCam);
 		// End -- Rendering
 
         //Time
@@ -154,6 +162,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 			}
 			else glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		}
+		break;
+
+	case GLFW_KEY_9:
+		if(action == GLFW_RELEASE)
+			freeze = !freeze;
 		break;
 
 	case GLFW_KEY_P:
