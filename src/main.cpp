@@ -78,29 +78,32 @@ int main() {
 	std::shared_ptr<CGL::Scene> scene = std::make_shared<CGL::Scene>();
 	global_scene = scene;
 
-	scene->AddShaderProgram("shader", "res/shaders/shader-unix.vert", "res/shaders/shader-unix.frag");
-	scene->AddShaderProgram("color", "res/shaders/color.vert", "res/shaders/color.frag");
+	scene->AddShaderProgram("shader", "res/shader/shader-unix.vert", "res/shader/shader-unix.frag");
+ 	scene->AddShaderProgram("color", "res/shader/color.vert", "res/shader/color.frag");
 
-	scene->AddModel("plane", "res/models/plane/plane.obj");
-	scene->AddModel("sphere", "res/models/sphere/sphere.obj");
-	scene->AddModel("dirt", "res/models/dirt/dirt.obj");
+	scene->AddModel("plane", "res/model/plane/plane.obj");
+	scene->AddModel("sphere", "res/model/sphere/sphere.obj");
+	scene->AddModel("dirt", "res/model/dirt/dirt.obj");
 
-	// Cheat
 	{
-	glm::mat4 modelCheat0 = glm::translate(glm::mat4(1.f), glm::vec3(10.f, -1000.f, 0.f));
-	glm::mat4 modelCheat1 = glm::translate(glm::mat4(1.f), glm::vec3(-10.f, -1000.f, 0.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 0.f, modelCheat0);
-	scene->AddActor("sphere", "color", CGL::Shape::SPHERE, 0.f, modelCheat1);
-	}
+//	/*
+	// Cheat
+	// Add two dummy blank objects initially
+	glm::mat4 model0 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 5.f, 0.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 0.f, model0);
+	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(-10.f, 5.f, 0.f));
+	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 0.f, model1);
 	// End Cheat
+//	*/
+	}
 
-	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 10.f, 0.f));
+	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 5.f, 0.f));
 	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model1);
 
 	glm::mat4 model3 = glm::translate(glm::mat4(1.f), glm::vec3(5.f, 5.f, 5.f));
 	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model3);
 
-	glm::mat4 model2 = glm::translate(glm::mat4(1.f), glm::vec3(10.f, 2.f, 0.f));
+	glm::mat4 model2 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 2.f, 0.f));
 	scene->AddActor("sphere", "color", CGL::Shape::SPHERE, .2f, model2);
 
 	scene->AddActor("plane", "shader", CGL::Shape::PLANE, 0.f, glm::mat4(1.f));
@@ -189,8 +192,8 @@ void shoot() {
 	if(global_scene == nullptr) return;
 
 	// add needed resources
-	global_scene->AddShaderProgram("color", "res/shaders/color.vert", "res/shaders/color.frag");
-	global_scene->AddModel("ball", "res/models/sphere/sphere.obj");
+	global_scene->AddShaderProgram("color", "res/shader/color.vert", "res/shader/color.frag");
+	global_scene->AddModel("ball", "res/model/sphere/sphere.obj");
 
 	// add actor in the position of the used camera (player)
 	glm::mat4 model_matrix = glm::translate(glm::mat4(1.f), global_scene->GetCameraPosition());
