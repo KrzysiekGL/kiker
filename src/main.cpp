@@ -180,13 +180,11 @@ void shoot() {
 	if(global_scene == nullptr) return;
 
 	// add needed resources
-	std::string shader = global_scene->AddShaderProgram("kolorek", "res/shader/color.vert", "res/shader/color.frag");
-	std::string model = global_scene->AddModel("kuleczka", "res/model/sphere/sphere.obj");
+	std::string shader = global_scene->AddShaderProgram("kolorek", "res/shader/color.vert", "res/shader/color.frag"); if(shader == "") return;
+	std::string model = global_scene->AddModel("kuleczka", "res/model/sphere/sphere.obj"); if(model == "") return;
 	glm::mat4 model_matrix = glm::translate(glm::mat4(1.f), global_scene->GetCameraPosition());
-	std::string body = global_scene->AddPrimitiveSphere(model+"prim1", model_matrix, .2f, 1.f);
-	std::string actor_name = global_scene->AddActor("pileczka", model, shader, body);
-
-	// set actor velocity
-	if(actor_name != "")
-		global_scene->SetActorLinearVelocity(actor_name, global_scene->GetCameraFront(), 20.f);
+	std::string body = global_scene->AddPrimitiveSphere(model+"prim1", model_matrix, .2f, 1.f); if(body == "") return;
+	std::string actor_name = global_scene->AddActor("pileczka", model, shader, body); if(actor_name == "") return;
+	// set actor linear velocity
+	global_scene->SetActorLinearVelocity(actor_name, global_scene->GetCameraFront(), 40.f);
 }
