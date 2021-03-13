@@ -78,35 +78,23 @@ int main() {
 	std::shared_ptr<CGL::Scene> scene = std::make_shared<CGL::Scene>();
 	global_scene = scene;
 
-	scene->AddShaderProgram("shader", "res/shader/shader-unix.vert", "res/shader/shader-unix.frag");
- 	scene->AddShaderProgram("color", "res/shader/color.vert", "res/shader/color.frag");
+	std::string shader_texture = scene->AddShaderProgram("shader", "res/shader/shader-unix.vert", "res/shader/shader-unix.frag");
+	std::string shader_color = scene->AddShaderProgram("color", "res/shader/color.vert", "res/shader/color.frag");
 
-	scene->AddModel("plane", "res/model/plane/plane.obj");
-	scene->AddModel("sphere", "res/model/sphere/sphere.obj");
-	scene->AddModel("dirt", "res/model/dirt/dirt.obj");
+	std::string plane1 = scene->AddModel("plane", "res/model/plane/plane.obj");
+	std::string sphere1 = scene->AddModel("sphere", "res/model/sphere/sphere.obj");
+	std::string box1 = scene->AddModel("dirt", "res/model/dirt/dirt.obj");
 
-	{
-//	/*
-	// Cheat
-	// Add two dummy blank objects initially
-	glm::mat4 model0 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 5.f, 0.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 0.f, model0);
-	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(-10.f, 5.f, 0.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 0.f, model1);
-	// End Cheat
-//	*/
-	}
+	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 10.f, 0.f));
+	std::string box1_body1 = scene->AddPrimitiveBox(box1+"prim1", model1, 1.f, btVector3(1.f, 1.f, 1.f));
+	scene->AddActor("box-01", box1, shader_texture, box1_body1);
 
-	glm::mat4 model1 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 5.f, 0.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model1);
+	glm::mat4 model2 = glm::translate(glm::mat4(1.f), glm::vec3(5.f, 4.f, 0.f));
+	std::string sphere1_body1 = scene->AddPrimitiveSphere(sphere1+"prim1", model2, 1.f, 1.f);
+	scene->AddActor("sphere-01", sphere1, shader_color, sphere1_body1);
 
-	glm::mat4 model3 = glm::translate(glm::mat4(1.f), glm::vec3(5.f, 5.f, 5.f));
-	scene->AddActor("dirt", "shader", CGL::Shape::BOX, 1.f, model3);
-
-	glm::mat4 model2 = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 2.f, 0.f));
-	scene->AddActor("sphere", "color", CGL::Shape::SPHERE, .2f, model2);
-
-	scene->AddActor("plane", "shader", CGL::Shape::PLANE, 0.f, glm::mat4(1.f));
+	std::string plane1_body1 = scene->AddPrimitivePlane(plane1+"prim1", glm::mat4(1.f), btVector3(0.f, 1.f, 0.f), 0.f);
+	scene->AddActor("plane-01", plane1, shader_texture, plane1_body1);
 	// End -- Things to draw
 
 	// Pre-GL settings
@@ -192,12 +180,11 @@ void shoot() {
 	if(global_scene == nullptr) return;
 
 	// add needed resources
-	global_scene->AddShaderProgram("color", "res/shader/color.vert", "res/shader/color.frag");
-	global_scene->AddModel("ball", "res/model/sphere/sphere.obj");
-
-	// add actor in the position of the used camera (player)
+	std::string shader = global_scene->AddShaderProgram("kolorek", "res/shader/color.vert", "res/shader/color.frag");
+	std::string model = global_scene->AddModel("kuleczka", "res/model/sphere/sphere.obj");
 	glm::mat4 model_matrix = glm::translate(glm::mat4(1.f), global_scene->GetCameraPosition());
-	std::string actor_name = global_scene->AddActor("ball", "color", CGL::Shape::SPHERE, .2f, model_matrix);
+	std::string body = global_scene->AddPrimitiveSphere(model+"prim1", model_matrix, .2f, 1.f);
+	std::string actor_name = global_scene->AddActor("pileczka", model, shader, body);
 
 	// set actor velocity
 	if(actor_name != "")

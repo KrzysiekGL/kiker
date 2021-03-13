@@ -156,6 +156,7 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../ext/matrix_transform.inl \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/matrix_transform.inl \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Resource.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/quaternion.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/../ext/vector_relational.hpp \
@@ -195,17 +196,18 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.inl \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/config.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/Importer.hpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/scene.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/postprocess.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/SOIL2/SOIL2.h \
- /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h \
- /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Scene.h \
- /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ResourceManager.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Actor.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/PrimitiveShape.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/btBulletDynamicsCommon.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/btBulletCollisionCommon.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h \
@@ -336,6 +338,7 @@ src/main.o: ../src/main.cpp \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/BulletDynamics/Dynamics/btActionInterface.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/BulletDynamics/Dynamics/btRigidBody.h \
+ /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h \
  /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/GL/glew.h:
@@ -652,6 +655,8 @@ src/main.o: ../src/main.cpp \
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h:
 
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Resource.h:
+
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/type_ptr.hpp:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/glm/gtc/../gtc/quaternion.hpp:
@@ -730,6 +735,10 @@ src/main.o: ../src/main.cpp \
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h:
 
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h:
+
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/config.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/assimp/Importer.hpp:
@@ -740,17 +749,15 @@ src/main.o: ../src/main.cpp \
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/SOIL2/SOIL2.h:
 
-/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Mesh.h:
-
-/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ShaderProgram.h:
-
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Scene.h:
 
-/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h:
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/ResourceManager.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Model.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Actor.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/PrimitiveShape.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/btBulletDynamicsCommon.h:
 
@@ -1011,5 +1018,7 @@ src/main.o: ../src/main.cpp \
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/BulletDynamics/Dynamics/btActionInterface.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/bullet/BulletDynamics/Dynamics/btRigidBody.h:
+
+/home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h:
 
 /home/code/Data/IT/Programming/libraries/OpenGL-ultimate/include/CGL/Camera.h:
