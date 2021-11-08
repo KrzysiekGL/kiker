@@ -1,0 +1,3 @@
+[submodule "lib/cgl"]
+	path = lib/cgl
+	url = https://gitlab.com/chris-engine-opengl/cgl.git
