@@ -8,10 +8,10 @@
 
 #include <memory>
 
-#include "CGL/ShaderProgram.h"
-#include "CGL/Model.h"
-#include "CGL/Scene.h"
-#include "CGL/Camera.h"
+#include <cgl/ShaderProgram.hpp>
+#include <cgl/Model.hpp>
+#include <cgl/Scene.hpp>
+#include <cgl/Camera.hpp>
 
 #define WIDTH 1280
 #define HEIGHT 720
