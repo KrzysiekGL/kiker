@@ -146,7 +146,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 	case GLFW_KEY_0:
 		if (action == GLFW_RELEASE) {
 			freeCam = !freeCam;
-			if (freeCam) { 
+			if (freeCam) {
 				glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 				int fbs_x, fbs_y; glfwGetFramebufferSize(window, &fbs_x, &fbs_y);
 				glfwSetCursorPos(window, (double)fbs_x / 2.0, (double)fbs_y / 2.0);

@@ -29,3 +29,7 @@ target_include_directories(kiker
 	"${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
+add_custom_command(TARGET kiker POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/res $<TARGET_FILE_DIR:kiker>/res
+	)
+
